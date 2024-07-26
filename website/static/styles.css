@@ -1,13 +1,22 @@
-
+/* manrope-latin-wght-normal */
+@font-face {
+    font-family: 'Manrope Variable';
+    font-style: normal;
+    font-display: auto;
+    font-weight: 200 800;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/manrope:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  }
 
 html {
     top: 0;
     left: 0;
     margin: 0;
     padding: 0;
+    font-family: 'Manrope Variable';
     --primary-color: #282624;
     background-color: var(--primary-color);
-    color: #E9E8E5;
+    color: #989690;
 }
 
 body {
@@ -24,12 +33,13 @@ body {
     width: 100vw;
     height: 10vh;
     background-color: transparent;
+    z-index: 1;
 }
 
 .heading {
     margin-left: 30px;
-    color: white;
-    font-size: 1.5rem;
+    /* color: white; */
+    font-size: 3rem;
     font-weight: 700;
     
 }
@@ -45,7 +55,7 @@ body {
 
 .tab-bar .tab {
     margin-left: 20px;
-    color: white;
+    /* color: white; */
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
@@ -54,6 +64,7 @@ body {
 .logo-container {    
     position: relative;
     display: flex;
+    top: 0;
     /* justify-content: center; */
     align-items: center;
     height: 100vh;
@@ -67,11 +78,12 @@ body {
     /* top: 0; */
     left: 50%;
     transform: translateX(-50%);
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: 40%;
     transition: transform 0.1s, top 0.1s;
+    /* filter: invert(70%) sepia(6%) saturate(287%) hue-rotate(8deg) brightness(86%) contrast(80%) */
     /* filter: invert(62%) sepia(9%) saturate(174%) hue-rotate(7deg) brightness(94%) contrast(90%); */
-    /* filter: invert(76%) sepia(11%) saturate(118%) hue-rotate(11deg) brightness(110%) contrast(91%); */    
+    /* filter: invert(76%) sepia(11%) saturate(118%) hue-rotate(11deg) brightness(110%) contrast(91%);     */
 }
 
 /* .next-div {
