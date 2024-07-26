@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    height: 2000px;
+    height: 4000px;
 }
 
 .tab-container {
@@ -38,7 +38,6 @@ body {
 
 .heading {
     margin-left: 30px;
-    /* color: white; */
     font-size: 3rem;
     font-weight: 700;
     
@@ -55,32 +54,32 @@ body {
 
 .tab-bar .tab {
     margin-left: 20px;
-    /* color: white; */
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
 }
 
-.logo-container {    
+.homepage {    
     position: relative;
     display: flex;
-    top: 0;
-    /* justify-content: center; */
+    top: 0;    
     align-items: center;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
-    /* margin-top: 50%; */
+    overflow: hidden;    
 }
 
-.logo-container img {
-    position: sticky;
-    /* top: 0; */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40%;
+img {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100vw;
     height: 40%;
     transition: transform 0.1s, top 0.1s;
+    z-index: 100;
     /* filter: invert(70%) sepia(6%) saturate(287%) hue-rotate(8deg) brightness(86%) contrast(80%) */
     /* filter: invert(62%) sepia(9%) saturate(174%) hue-rotate(7deg) brightness(94%) contrast(90%); */
     /* filter: invert(76%) sepia(11%) saturate(118%) hue-rotate(11deg) brightness(110%) contrast(91%);     */
