@@ -22,10 +22,10 @@ html {
     padding: 0;    
     background-color: var(--bg-primary-color);
     color: var(--primary-color);
+    height: 500vh;
 }
 
 body {
-    height: 500vh;
     margin: 0;
 }
 
@@ -114,6 +114,12 @@ body {
 
 #why-us {
     background-color: var(--bg-secondary-color);
+    position: relative;
+    height: 100vh;
+}
+
+#contact {
+    background-color: var(--bg-primary-color);
     position: relative;
     height: 100vh;
 }
