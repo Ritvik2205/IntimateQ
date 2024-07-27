@@ -7,7 +7,7 @@ $(window).on('scroll', function() {
     const $image = $('#logo');
     const scrollPosition = $(window).scrollTop();
     const scale = Math.max(1 - scrollPosition / 1000, 0.5);
-    const offset = 100;
+    const offset = 90;
 
     $image.css('transform', `scale(${scale})`);
     

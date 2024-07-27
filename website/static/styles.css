@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    height: 4000px;
+    height: 500vh;
 }
 
 .tab-container {
@@ -81,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 45%;
+    top: 40%;
     transform: translateY(-50%);
     width: 100vw;
     height: 30%;
@@ -103,4 +103,10 @@ body {
 .service-icon img {
     height: 100%;
     width: 100%;
+}
+
+#doctors {
+    background-color: var(--bg-primary-color);
+    position: relative;
+    height: 100vh;
 }
