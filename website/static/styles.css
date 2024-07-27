@@ -64,22 +64,24 @@ body {
     cursor: pointer;
 }
 
-.homepage {    
+#homepage {    
     position: relative;
-    display: flex;
     top: 0;    
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
     align-items: center;
     height: 100svh;
     width: 100vw;
     overflow: hidden;    
 }
 
-img {
+#logo {
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     width: 100vw;
     height: 30%;
@@ -87,8 +89,18 @@ img {
     z-index: 100;
 }
 
-.next-div {
+#services {
     background-color: var(--bg-secondary-color);
     position: relative;
     height: 100vh;
+}
+
+.service-icon {
+    height: 100px;
+    width: 100px;
+}
+
+.service-icon img {
+    height: 100%;
+    width: 100%;
 }
