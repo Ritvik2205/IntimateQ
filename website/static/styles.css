@@ -26,6 +26,7 @@ html {
 
 body {
     height: 500vh;
+    margin: 0;
 }
 
 .tab-container {
@@ -71,7 +72,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100svh;
+    height: 100vh;
     width: 100vw;
     overflow: hidden;    
 }
@@ -107,6 +108,12 @@ body {
 
 #doctors {
     background-color: var(--bg-primary-color);
+    position: relative;
+    height: 100vh;
+}
+
+#why-us {
+    background-color: var(--bg-secondary-color);
     position: relative;
     height: 100vh;
 }
