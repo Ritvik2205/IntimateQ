@@ -13,6 +13,7 @@
     --primary-color: #989690;
     --bg-primary-color: #282624;    
     --bg-secondary-color: #D4D2CA;
+    --accent-color: #E9E8E5;
 }
 
 html {
@@ -63,6 +64,15 @@ body {
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+.tab-bar .tab a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.tab-bar .tab a:hover {
+    color: var(--accent-color);
 }
 
 #homepage {        
