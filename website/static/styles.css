@@ -9,6 +9,9 @@
   }
 
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Manrope Variable';
     --primary-color: #989690;
     --bg-primary-color: #282624;    
@@ -83,7 +86,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;    
+    /* overflow: hidden;     */
 }
 
 .slogan {
