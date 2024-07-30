@@ -1,17 +1,19 @@
 $(document).ready(function() {
 
     // Add smooth scrolling to all links
-    $(".tab a").on('click', function(event) {
-        if (this.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-            const hash = this.hash;
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function() {
-                window.location.hash = hash;
-            });
-        } 
+    $(".tab").on('click', function(event) {
+        var sectionId = $(this).data('section-id');
+        var targetOffset = $(`section${sectionId}`).offset().top;        
+        // Prevent default anchor click behavior
+        event.preventDefault();
+        const scrollDuration = 800;
+
+        // Smooth scroll to the target element
+        $('html, body').animate({
+            scrollTop: targetOffset
+        }, scrollDuration, function() {
+            window.location.hash = sectionId;
+        });        
     });
     
 });
