@@ -12,7 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Manrope Variable';
+    font-family: 'Manrope Variable', sans-serif;
     --primary-color: #989690;
     --bg-primary-color: #282624;    
     --bg-secondary-color: #D4D2CA;
@@ -127,16 +127,117 @@ body {
     height: 30%;
     transition: transform 0.1s, top 0.05s;
     z-index: 100;
+    mix-blend-mode: difference;
 }
 
 #services {
-    background-color: var(--bg-secondary-color);    
+    background-color: var(--primary-color);    
     height: 100vh;
+    color: var(--bg-primary-color);
 }
 
-.service-icon {
-    height: 100px;
+#services-subheading {
+    position: absolute;
+    width: 100%;
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 130px;
+}
+
+.services-container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 80px 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+.service {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 180px;
+    padding: 20px;    
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+.service:hover {
+    height: 300px;    
+}
+
+.service .lines {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-primary-color);
+    overflow: hidden;
+}
+
+.service .lines::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    height: 120px;
+    background: linear-gradient(transparent, var(--bg-secondary-color),
+             var(--bg-secondary-color), var(--bg-secondary-color), transparent);
+    animation: animate 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.service:hover .lines::before {
+    animation-play-state: running;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.service .lines::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--bg-primary-color);
+}
+
+.service .service-icon {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100px;
+    height: 100px;
+    background: black;
+    transition: 0.5s;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service:hover .service-icon {
+    top: 25px;
+    width: 200px;
+    height: 200px;
 }
 
 .service-icon img {
