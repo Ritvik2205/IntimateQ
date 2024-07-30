@@ -43,7 +43,7 @@ body {
     width: 100vw;
     height: 10vh;
     background-color: transparent;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .heading {
@@ -88,6 +88,7 @@ body {
     width: 100vw;
     /* overflow: hidden;     */
 }
+
 
 .slogan {
     font-size: 4.5rem;
@@ -160,5 +161,5 @@ body {
 
 section {
     position: sticky;
-    top: 0;
+    top: 0;    
 }
