@@ -79,6 +79,19 @@ body {
     color: var(--accent-color);
 }
 
+#logo {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 100vw;
+    height: 30%;
+    transition: transform 0.1s, top 0.05s;
+    z-index: 100;
+}
+
 #homepage {        
     top: 0;    
     flex-direction: column;
@@ -117,20 +130,6 @@ body {
     color: var(--primary-color);
 }
 
-#logo {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 40%;
-    transform: translateY(-50%);
-    width: 100vw;
-    height: 30%;
-    transition: transform 0.1s, top 0.05s;
-    z-index: 100;
-    mix-blend-mode: difference;
-}
-
 #services {
     background-color: var(--primary-color);    
     height: 100vh;
@@ -158,7 +157,7 @@ body {
     padding: 80px 40px;
     justify-content: center;
     align-items: center;
-    gap: 80px;
+    gap: 80px 200px;
 }
 
 .service {
@@ -224,8 +223,8 @@ body {
     top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     background: var(--tertiary-color);
     transition: 0.5s;
     z-index: 10;
@@ -236,8 +235,8 @@ body {
 }
 
 .service:hover .service-icon {    
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
 }
 
 .service .service-icon::before {
@@ -285,6 +284,49 @@ body {
 }
 
 .service:hover .service-icon img {
+    opacity: 1;
+}
+
+.service .content {
+    color: var(--bg-secondary-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.service .content .details {
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(70px);
+}
+
+.service:hover .content .details {
+    transform: translateY(30px);
+}
+
+.service .content .service-title {
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.service .content .service-description {
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 1.5rem;
+    font-weight: 250;   
+}
+
+.service:hover .content .service-description {
     opacity: 1;
 }
 
