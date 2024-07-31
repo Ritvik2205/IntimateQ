@@ -45,13 +45,13 @@ body {
     height: 10vh;
     background-color: transparent;
     z-index: 1000;
+    mix-blend-mode: difference;
 }
 
 .heading {
     margin-left: 30px;
     font-size: 3rem;
     font-weight: 700;
-    
 }
 
 .tab-bar {
@@ -65,17 +65,14 @@ body {
 
 .tab-bar .tab {
     margin-left: 20px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 500;
-    cursor: pointer;
-}
-
-.tab-bar .tab a {
-    text-decoration: none;
     color: var(--primary-color);
+    cursor: pointer;
+    transition: 0.1s ease-in;    
 }
 
-.tab-bar .tab a:hover {
+.tab-bar .tab:hover {
     color: var(--accent-color);
 }
 
@@ -90,6 +87,7 @@ body {
     height: 30%;
     transition: transform 0.1s, top 0.05s;
     z-index: 100;
+    mix-blend-mode: difference;
 }
 
 #homepage {        
