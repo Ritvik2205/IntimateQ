@@ -275,8 +275,17 @@ body {
 }
 
 .service-icon img {
+    position: absolute;
     height: 80%;
     width: 80%;
+    z-index: 1;
+    opacity: 0.7;
+    filter: invert(74%) sepia(76%) saturate(7%) hue-rotate(8deg) brightness(106%) contrast(98%);
+    transition: 0.3s;
+}
+
+.service:hover .service-icon img {
+    opacity: 1;
 }
 
 #doctors {
