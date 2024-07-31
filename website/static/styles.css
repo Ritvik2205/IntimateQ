@@ -17,6 +17,7 @@
     --bg-primary-color: #282624;    
     --bg-secondary-color: #D4D2CA;
     --accent-color: #E9E8E5;
+    --tertiary-color: #504F48;
 }
 
 html {
@@ -225,7 +226,7 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 100px;
-    background: var(--bg-secondary-color);
+    background: var(--tertiary-color);
     transition: 0.5s;
     z-index: 10;
     overflow: hidden;
@@ -234,10 +235,43 @@ body {
     align-items: center;
 }
 
-.service:hover .service-icon {
-    top: -40px;
+.service:hover .service-icon {    
     width: 150px;
     height: 150px;
+}
+
+.service .service-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 80px;
+    background: linear-gradient(transparent, var(--accent-color),
+    var(--accent-color), var(--accent-color), transparent);
+    animation: animate2 4s linear infinite;
+    animation-play-state: paused;  
+}
+
+.service:hover .service-icon::before {
+    animation-play-state: running;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+.service .service-icon::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--tertiary-color);
 }
 
 .service-icon img {
