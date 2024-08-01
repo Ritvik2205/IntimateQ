@@ -131,7 +131,7 @@ body {
 #chat-scroll-btn {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 35px;
     height: max-content;
     background-color: var(--bg-primary-color);
     color: var(--bg-secondary-color);
@@ -141,7 +141,9 @@ body {
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
-    /* mix-blend-mode: difference; */
+    box-shadow: 0 3px 10px #000000c1;
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
     transition: all 0.3s ease;
     display: none;
     z-index: 1000;
