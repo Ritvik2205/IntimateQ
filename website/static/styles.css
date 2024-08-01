@@ -401,6 +401,7 @@ body {
     transform: translateX(-50%);
     display: grid;  
     height: 650px;
+    /* width: 90%; */
     grid-template-columns: repeat(3, minmax(400px, 1fr));    
     padding: 40px;
     justify-content: center;
@@ -451,7 +452,7 @@ body {
     height: 100%;
 }
 
-.overlay .doctor-name {
+.overlay .doctor-name {    
     font-size: 1.7rem;
     font-weight: 700;
     margin-bottom: 10px;
