@@ -421,7 +421,7 @@ body {
     height: 100%;
     border-radius: 10px;
     display: block;
-    transition: all 0.5s;
+    transition: all 0.4s;
 }
 
 .doctor .overlay {
@@ -440,7 +440,15 @@ body {
     padding: 0 40px;
     text-align: center;
     font-size: 14px;
-    transition: all 0.5s;
+    transition: all 0.4s;
+}
+
+.doctor.show img {
+    transform: scale(1.1);
+}
+
+.doctor.show .overlay {
+    height: 100%;
 }
 
 .overlay .doctor-name {
@@ -459,14 +467,6 @@ body {
     color: var(--accent-color);
     letter-spacing: 1px;
     margin-bottom: 5px;
-}
-
-.doctor:hover img {
-    transform: scale(1.1);
-}
-
-.doctor:hover .overlay {
-    height: 100%;
 }
 
 #contact {

@@ -42,4 +42,12 @@ $(window).on('scroll', function() {
     } else {
         $('#chat-scroll-btn').removeClass('show');
     }
+
+    const servicesHeight = $('#services').height();
+    const heightForDoctors = homepageHeight + servicesHeight;
+    if (scrollPosition > heightForDoctors) {
+        $('.doctor').addClass('show');
+    } else {
+        $('.doctor').removeClass('show');
+    }
 });
