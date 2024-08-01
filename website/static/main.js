@@ -35,4 +35,11 @@ $(window).on('scroll', function() {
         'position': 'fixed',
         'top': `${Math.max(top, -70)}px`
     }); 
+
+    const homepageHeight = $('#homepage').height();
+    if (scrollPosition > homepageHeight) {
+        $('#chat-scroll-btn').addClass('show');
+    } else {
+        $('#chat-scroll-btn').removeClass('show');
+    }
 });
