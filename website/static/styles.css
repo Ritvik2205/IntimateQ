@@ -181,13 +181,14 @@ body {
     filter: none;
 }
 
-#services {
+#services,
+#why-us {
     background-color: var(--primary-color);    
     height: 100vh;
     color: var(--bg-primary-color);
 }
 
-#services-subheading {
+.subheading {
     position: absolute;
     width: 100%;
     font-size: 4.5rem;
@@ -384,11 +385,88 @@ body {
 #doctors {
     background-color: var(--bg-primary-color);    
     height: 100vh;
+    padding: 10px 0;
 }
 
-#why-us {
-    background-color: var(--bg-secondary-color);    
-    height: 100vh;
+.wrapper {
+    padding: 10px 10%;
+    /* position: relative; */
+}
+
+.doctors-card {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-top: 10px;
+    transform: translateX(-50%);
+    display: grid;  
+    height: 650px;
+    grid-template-columns: repeat(3, minmax(400px, 1fr));    
+    padding: 40px;
+    justify-content: center;
+    align-items: self-start;
+    gap: 80px;
+}
+
+.doctor {
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.doctor img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: all 0.5s;
+}
+
+.doctor .overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(transparent, #1c1c1c 58%);
+    border-radius: 10px; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+.overlay .doctor-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 80%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+
+.overlay .doctor-specialization {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.doctor:hover img {
+    transform: scale(1.1);
+}
+
+.doctor:hover .overlay {
+    height: 100%;
 }
 
 #contact {
