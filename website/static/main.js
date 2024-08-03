@@ -50,12 +50,23 @@ $(window).on('scroll', function() {
         $('.service-container').removeClass('show');
     }
 
-
-
     const heightForDoctors = homepageHeight + servicesHeight;
     if (scrollPosition > heightForDoctors) {
         $('.doctor').addClass('show');
     } else {
         $('.doctor').removeClass('show');
+    }
+
+    const heightForWhyUs = heightForDoctors + $('#doctors').height();
+    if (scrollPosition > heightForWhyUs) {
+        $('.why-us-card').each(function(index) {
+            const $this = $(this);
+            console.log($this);
+            setTimeout(function() {
+                $this.addClass('show');                
+            }, index * 300);
+        })
+    } else {
+        $('.why-us-card').removeClass('show');
     }
 });
