@@ -574,6 +574,46 @@ body {
     transform: translateX(-16.82em);
 }
 
+.why-us-card:nth-child(odd)::before,
+.why-us-card:nth-child(even)::before {
+    content: '';
+    background: var(--bg-primary-color);
+    width: 3em;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.why-us-card:nth-child(odd)::before {
+    left: 0;
+}
+
+.why-us-card:nth-child(even)::before {
+    right: 0;
+    width: 3.18em;
+}
+
+.why-us-card:nth-child(odd) .overlay::before,
+.why-us-card:nth-child(even) .overlay::before {
+    content: '';
+    background: var(--bg-primary-color);
+    width: 0.8em;
+    height: 0.8em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.why-us-card:nth-child(odd) .overlay::before {
+    left: -0.5em;
+}
+
+.why-us-card:nth-child(even) .overlay::before {
+    right: -0.5em;
+}
+
 #contact {
     background-color: var(--bg-primary-color);    
     height: 100vh;
