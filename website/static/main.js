@@ -44,6 +44,14 @@ $(window).on('scroll', function() {
     }
 
     const servicesHeight = $('#services').height();
+    if (scrollPosition > servicesHeight) {
+        $('.service-container').addClass('show');
+    } else {
+        $('.service-container').removeClass('show');
+    }
+
+
+
     const heightForDoctors = homepageHeight + servicesHeight;
     if (scrollPosition > heightForDoctors) {
         $('.doctor').addClass('show');

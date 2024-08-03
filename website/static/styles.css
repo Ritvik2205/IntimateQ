@@ -527,6 +527,53 @@ body {
     padding-bottom: 3px;
 }
 
+.why-us-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15%;
+    margin: 5em auto;
+    max-width: 35.14em;
+    width: 35.14em;
+    padding: 2px;
+}
+
+.why-us-card {
+    width: 34em;
+    max-width: 34em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    position: relative;
+}
+
+.why-us-card .overlay {
+    border: 2px solid var(--bg-primary-color);
+    border-radius: 1em;
+    padding: 1.5em;
+}
+
+.why-us-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.why-us-description {
+    line-height: 27px;
+    font-size: 1rem;
+}
+
+.why-us-card:nth-child(odd) {
+    border-left: 3px solid var(--bg-primary-color);
+    padding-left: 3em;
+    transform: translateX(17em);
+}
+
+.why-us-card:nth-child(even) {
+    border-right: 3px solid var(--bg-primary-color);
+    padding-right: 3.2em;
+    transform: translateX(-16.82em);
+}
+
 #contact {
     background-color: var(--bg-primary-color);    
     height: 100vh;
