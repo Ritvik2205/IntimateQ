@@ -527,22 +527,22 @@ body {
     padding-bottom: 3px;
 }
 
-.why-us-container {
+.why-us-container {    
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 15%;
+    top: 18%;
     margin: 5em auto;
-    max-width: 35.14em;
-    width: 35.14em;
+    max-width: 37.14em;
+    width: 37.14em;
     padding: 2px;
 }
 
 .why-us-card {
-    width: 34em;
-    max-width: 34em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    width: 36em;
+    max-width: 36em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     position: relative;
 }
 
@@ -553,7 +553,7 @@ body {
 }
 
 .why-us-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 
@@ -565,13 +565,13 @@ body {
 .why-us-card:nth-child(odd) {
     border-left: 3px solid var(--bg-primary-color);
     padding-left: 3em;
-    transform: translateX(17em);
+    transform: translateX(18em);
 }
 
 .why-us-card:nth-child(even) {
     border-right: 3px solid var(--bg-primary-color);
     padding-right: 3.2em;
-    transform: translateX(-16.82em);
+    transform: translateX(-17.82em);
 }
 
 .why-us-card:nth-child(odd)::before,
