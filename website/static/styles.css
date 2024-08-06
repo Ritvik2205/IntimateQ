@@ -648,13 +648,13 @@ body {
 .feedback-heading {
     font-size: 3rem;
     font-weight: 700;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
 .feedback-form {
     width: 70%;
-    height: 60%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
@@ -676,7 +676,7 @@ body {
 .feedback-form #feedback-text { 
     width: 100%;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     padding: 10px;
     background-color: transparent;
     border: 2px solid var(--primary-color);
@@ -695,6 +695,23 @@ body {
 
 .feedback-form #feedback-text {    
     height: 200px;
+    resize: none;
+}
+
+.feedback-submit {
+    width: fit-content;
+    margin-left: auto;
+    border: 3px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-submit:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-primary-color);
 }
 
 .contact-container {
