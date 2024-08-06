@@ -625,6 +625,78 @@ body {
 #contact {
     background-color: var(--bg-primary-color);    
     height: 100vh;
+    overflow: hidden;
+}
+
+#contact > div {
+    display: flex;
+    position: absolute;
+    top: 10%;
+    height: 100%;
+    width: 100%;    
+    
+}
+
+#feedback {    
+    flex: 1;    
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.feedback-form {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: flex-start;
+    padding: 40px;        
+}
+
+.feedback-form label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--bg-secondary-color);
+}
+
+.feedback-form #email,
+.feedback-form #name,
+.feedback-form #feedback-text { 
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.feedback-form #email:focus,
+.feedback-form #name:focus,
+.feedback-form #feedback-text:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+.feedback-form #feedback-text {    
+    height: 200px;
+}
+
+.contact-container {
+    flex: 1;
 }
 
 section {
