@@ -660,6 +660,8 @@ body {
     /* align-items: center; */
     justify-content: flex-start;
     padding: 40px;        
+    border-radius: 10px;
+    box-shadow:-4px -4px 12px rgb(63, 61, 58), 4px 4px 12px rgb(23, 22, 19);
 }
 
 .feedback-form label {
