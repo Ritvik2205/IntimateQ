@@ -646,7 +646,7 @@ body {
 }
 
 .feedback-heading {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -714,8 +714,60 @@ body {
     color: var(--bg-primary-color);
 }
 
-.contact-container {
+.contact-right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;    
+}
+
+#get-involved {
+    margin-bottom: 30px;
+    width: 80%;
+}
+
+.get-involved-heading,
+.contact-sunheading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.get-involved-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 5px;    
+    color: var(--accent-color);
+}
+
+.get-involved-description {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.get-involved-ending {
+    font-size: 1.1rem;
+}
+
+.contact-sunheading {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.contact-container {
+    width: 80%;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+}
+
+.contact-intro a {
+    color: var(--accent-color);
 }
 
 section {
