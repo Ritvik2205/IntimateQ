@@ -64,7 +64,7 @@ $(window).on('scroll', function() {
             console.log($this);
             setTimeout(function() {
                 $this.addClass('show');                
-            }, index * 300);
+            }, index * 200);
         })
     } else {
         $('.why-us-card').removeClass('show');
