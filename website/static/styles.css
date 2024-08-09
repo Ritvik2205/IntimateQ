@@ -402,10 +402,11 @@ body {
     display: grid;  
     height: 600px;
     /* width: 90%; */
-    grid-template-columns: repeat(3, minmax(400px, 1fr));    
+    /* grid-template-columns: repeat(3, minmax(400px, 1fr));         */
+    grid-template-columns: repeat(1, minmax(400px, 1fr));        
     padding: 40px;
     justify-content: center;
-    align-items: self-start;
+    /* align-items: self-start; */    
     gap: 80px;
 }
 
