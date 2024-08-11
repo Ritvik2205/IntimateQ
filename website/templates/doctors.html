@@ -8,15 +8,19 @@
     <div class="container">
         <h1>Doctors</h1>
         <div class="doctors">
-            <!-- {% for doctor in doctors %}
-                <div class="doctor">
-                    <img src="{{ doctor.image }}" alt="{{ doctor.name }}">
-                    <h2>{{ doctor.name }}</h2>
-                    <p>{{ doctor.specialty }}</p>
-                    <p>{{ doctor.phone }}</p>
-                    <p>{{ doctor.email }}</p>
+            <div class="wrapper">
+                <div class="doctors-card">
+                    <div class="doctor">                    
+                        <img src="../static/assets/doc1.png" alt="doctor" class="doctor-image">                    
+                        <div class="overlay">                        
+                            <div class="doctor-name">Dr. Srijana Saha</div>
+                            <div class="doctor-specialization">Dept of Head - Neck Surgery</div>
+                            <div class="doctor-qualification">MBBS, MS ENT, DNB ENT</div>     
+                            <div class="doctor-consult-btn">Consult</div>                                                   
+                        </div>
+                    </div>
                 </div>
-            {% endfor %} -->
+            </div>
         </div>
     </div>
 {% endblock %}
