@@ -16,6 +16,21 @@ $(document).ready(function() {
         });        
     });
     
+    // Chat button redirect to doctors
+    $(".chat-btn").on('click', function(event) {
+        var sectionId = '#doctors';
+        var targetOffset = $('#doctors').offset().top;        
+        // Prevent default anchor click behavior
+        event.preventDefault();
+        const scrollDuration = 800;
+
+        // Smooth scroll to the target element
+        $('html, body').animate({
+            scrollTop: targetOffset
+        }, scrollDuration, function() {
+            window.location.hash = sectionId;
+        });        
+    });
 });
 
 $(window).on('scroll', function() {
@@ -61,7 +76,6 @@ $(window).on('scroll', function() {
     if (scrollPosition > heightForWhyUs) {
         $('.why-us-card').each(function(index) {
             const $this = $(this);
-            console.log($this);
             setTimeout(function() {
                 $this.addClass('show');                
             }, index * 200);
