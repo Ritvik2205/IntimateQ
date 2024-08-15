@@ -9,4 +9,4 @@ def home():
 
 @views.route('/doctors')
 def doctors():
-    return render_template("doctors.html")
+    return render_template("new.html")

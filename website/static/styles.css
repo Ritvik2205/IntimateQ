@@ -13,12 +13,16 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Manrope Variable', sans-serif;
-    overflow-x: hidden;
     --primary-color: #989690;
     --bg-primary-color: #282624;    
     --bg-secondary-color: #D4D2CA;
     --accent-color: #E9E8E5;
     --tertiary-color: #504F48;
+}
+
+img {
+    aspect-ratio: 1;
+    height: 200px;
 }
 
 html {
@@ -29,6 +33,7 @@ html {
     background-color: var(--bg-primary-color);
     color: var(--primary-color);
     height: 500vh;
+    overflow-x: hidden;
     /* width: 100vw;     */
 }
 
@@ -52,12 +57,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 10%;
+    top: 25%;
     transform: translateY(-50%);
-    width: 85vw;
-    height: 8%;
+    width: 100vw;
+    height: 25%;
     transition: transform 0.1s, top 0.05s;
-    z-index: 100;
+    z-index: 1000;
     mix-blend-mode: difference;
 }
 
@@ -80,11 +85,82 @@ body {
 }
 
 .slogan {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     text-align: center;
     margin-top: 10px;
     letter-spacing: 2px;
+}
+
+.chat-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-primary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+}
+
+.chat-btn:hover {
+    background-color: var(--bg-primary-color);
+    color: var(--primary-color);
+}
+
+#chat-scroll-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 35px;
+    height: max-content;
+    background-color: var(--bg-primary-color);
+    color: var(--bg-secondary-color);
+    border: 3px solid var(--bg-primary-color);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 3px 10px #000000c1;
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
+    transition: all 0.3s ease;
+    display: none;
+    z-index: 1000;
+}
+
+#chat-scroll-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-primary-color);
+}
+
+@keyframes rotateScaleUp {
+    0% {
+        transform: rotate(0deg) scale(0.5);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+#chat-scroll-btn.show {
+    display: block;
+    animation: rotateScaleUp 0.5s ease forwards;
+}
+
+#chat-scroll-btn img {
+    width: 40px;
+    height: 40px;
+    filter: invert(60%) sepia(12%) saturate(131%) hue-rotate(7deg) brightness(98%) contrast(86%);
+}
+
+#chat-scroll-btn:hover img {
+    filter: none;
 }
 
 #services,
@@ -92,11 +168,50 @@ body {
     background-color: var(--primary-color);    
     height: 100vh;
     color: var(--bg-primary-color);
+    overflow: hidden;
+}
+
+.subheading {
+    /* position: absolute; */
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 90px;
+}
+
+.services-container {
+    position: relative;
+    top: 10%;
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px 20px;
+}
+
+.service {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 150px;
+    padding: 20px;    
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
 }
 
 
+
+
 /* General mobile styles */
-@media (min-width: 760px) {
+@media (min-width: 768px) {
     
     
     .tab-container {
@@ -154,98 +269,19 @@ body {
     
     .slogan {
         font-size: 4.5rem;
-        font-weight: 700;
-        text-align: center;
         margin-top: 100px;
-        letter-spacing: 2px;
-    }
-    
-    .chat-btn {
-        background-color: var(--primary-color);
-        color: var(--bg-primary-color);
-        border: 3px solid var(--primary-color);
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        font-weight: 500;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: all 0.2s ease;
-    }
-    
-    .chat-btn:hover {
-        background-color: var(--bg-primary-color);
-        color: var(--primary-color);
-    }
-    
-    #chat-scroll-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 35px;
-        height: max-content;
-        background-color: var(--bg-primary-color);
-        color: var(--bg-secondary-color);
-        border: 3px solid var(--bg-primary-color);
-        border-radius: 50%;
-        padding: 10px;
-        font-size: 1.2rem;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 0 3px 10px #000000c1;
-        backdrop-filter: blur(6.2px);
-        -webkit-backdrop-filter: blur(6.2px);
-        transition: all 0.3s ease;
-        display: none;
-        z-index: 1000;
-    }
-    
-    #chat-scroll-btn:hover {
-        background-color: var(--primary-color);
-        color: var(--bg-primary-color);
-    }
-    
-    @keyframes rotateScaleUp {
-        0% {
-            transform: rotate(0deg) scale(0.5);
-        }
-        50% {
-            transform: rotate(180deg) scale(1.2);
-        }
-        100% {
-            transform: rotate(360deg) scale(1);
-        }
-    }
-    
-    #chat-scroll-btn.show {
-        display: block;
-        animation: rotateScaleUp 0.5s ease forwards;
     }
     
     #chat-scroll-btn img {
         width: 50px;
         height: 50px;
-        filter: invert(60%) sepia(12%) saturate(131%) hue-rotate(7deg) brightness(98%) contrast(86%);
     }
-    
-    #chat-scroll-btn:hover img {
-        filter: none;
-    }
-    
-    #services,
-    #why-us {
-        background-color: var(--primary-color);    
-        height: 100vh;
-        color: var(--bg-primary-color);
-    }
+
+    /* services section */
     
     .subheading {
-        position: absolute;
-        width: 100%;
+        position: absolute;        
         font-size: 4.5rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-align: center;
-        margin-top: 90px;
     }
     
     .services-container {

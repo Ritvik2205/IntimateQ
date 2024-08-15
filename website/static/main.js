@@ -48,23 +48,27 @@ $(window).on('scroll', function() {
     const scale = Math.max(1 - scrollPosition / 1000, 0.4);
     const offset = 90;
 
-    
     $image.css('transform', `scale(${scale})`);
+
     
     
     const initialTop = (($(window).height() - $image.height()) / 2) - offset;
-    const finalTop = -70;
-    const top = Math.max(finalTop, initialTop - scrollPosition);
-
-    if ($(window).width <= 768 && scrollPosition === 0) {
-        $image.css('top', '3%');
-        $image.css('transform', 'scale(1)');
+    if ($(window).width() <= 768) {
+        const finalTop = 120;
+        const top = Math.min(finalTop, initialTop - scrollPosition);
+        $image.css({
+            'position': 'fixed',
+            'top': `${Math.max(top, -70)}px`
+        }); 
     } else {
+        const finalTop = -70;
+        const top = Math.max(finalTop, initialTop - scrollPosition);
         $image.css({
             'position': 'fixed',
             'top': `${Math.max(top, -70)}px`
         }); 
     }
+    
 
     const homepageHeight = $('#homepage').height();
     if (scrollPosition > homepageHeight) {
