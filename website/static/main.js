@@ -53,7 +53,7 @@ $(window).on('scroll', function() {
     
     
     const initialTop = (($(window).height() - $image.height()) / 2) - offset;
-    if ($(window).width() <= 768) {
+    if ($(window).width() <= 768) {        
         const finalTop = 120;
         const top = Math.min(finalTop, initialTop - scrollPosition);
         $image.css({
@@ -77,11 +77,12 @@ $(window).on('scroll', function() {
         $('#chat-scroll-btn').removeClass('show');
     }
 
-    const servicesHeight = $('#services').height();
-    if (scrollPosition > servicesHeight) {
-        $('.service-container').addClass('show');
+    const servicesHeight = $('#services').height();  
+    const scrollOffset = 200;  
+    if (scrollPosition > (homepageHeight - scrollOffset) && $(window).width() <= 768) {
+        $('.service').addClass('show');
     } else {
-        $('.service-container').removeClass('show');
+        $('.service').removeClass('show');
     }
 
     const heightForDoctors = homepageHeight + servicesHeight;

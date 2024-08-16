@@ -22,7 +22,7 @@
 
 img {
     aspect-ratio: 1;
-    height: 200px;
+    height: 100px;
 }
 
 html {
@@ -199,12 +199,164 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 170px;
+    width: 150px;
     height: 150px;
     padding: 20px;    
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: all 0.5s ease;
+}
+
+.service.show {
+    height: 200px;    
+}
+
+.service .lines {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-primary-color);
+    overflow: hidden;
+}
+
+.service .lines::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 80px;
+    background: linear-gradient(transparent, var(--bg-secondary-color),
+             var(--bg-secondary-color), var(--bg-secondary-color), transparent);
+    animation: animate 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.service.show .lines::before {
+    animation-play-state: running;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.service .lines::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--bg-primary-color);
+}
+
+.service .service-icon {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: var(--tertiary-color);
+    transition: 0.5s;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service.show .service-icon {    
+    width: 110px;
+    height: 110px;
+}
+
+.service .service-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 80px;
+    background: linear-gradient(transparent, var(--accent-color),
+    var(--accent-color), var(--accent-color), transparent);
+    animation: animate2 4s linear infinite;
+    animation-play-state: paused;  
+}
+
+.service.show .service-icon::before {
+    animation-play-state: running;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+.service .service-icon::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--tertiary-color);
+}
+
+.service-icon img {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    z-index: 1;
+    opacity: 0.7;
+    filter: invert(74%) sepia(76%) saturate(7%) hue-rotate(8deg) brightness(106%) contrast(98%);
+    transition: 0.3s;
+}
+
+.service.show .service-icon img {
+    opacity: 1;
+}
+
+.service .content {
+    color: var(--bg-secondary-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.service .content .details {
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(30px);
+}
+
+.service .content .service-title {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.service .content .service-description {
+    opacity: 0;
+    transition: 0.5s;
+    font-size: 0.8rem;
+    font-weight: 250;       
+}
+
+.service.show .content .service-description {
+    opacity: 1;
 }
 
 
