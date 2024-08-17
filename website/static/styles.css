@@ -482,6 +482,10 @@ body {
     .service:hover .service-icon img {
         opacity: 1;
     }
+
+    .service .content .details {
+        transform: translateY(80px);
+    }
     
     .service:hover .content .details {
         transform: translateY(50px);
