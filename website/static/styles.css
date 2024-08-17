@@ -183,7 +183,7 @@ body {
 
 .services-container {
     position: relative;
-    top: 10%;
+    top: 5%;
     display: grid;  
     grid-template-columns: repeat(2, 1fr);
 
