@@ -86,7 +86,7 @@ $(window).on('scroll', function() {
     }
 
     const heightForDoctors = homepageHeight + servicesHeight;
-    if (scrollPosition > heightForDoctors) {
+    if (scrollPosition > (heightForDoctors - scrollOffset)) {
         $('.doctor').addClass('show');
     } else {
         $('.doctor').removeClass('show');
