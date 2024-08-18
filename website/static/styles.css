@@ -165,6 +165,7 @@ body {
 
 #services,
 #why-us {
+    position: relative;
     background-color: var(--primary-color);    
     height: 100vh;
     color: var(--bg-primary-color);
@@ -502,6 +503,106 @@ body {
     height: 25px;
     margin-left: 10px;
     padding-bottom: 3px;
+}
+
+.why-us-container {    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15%;
+    margin: 1em auto;
+    max-width: 100%;
+    width: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-us-card {
+    width: 50%;
+    max-width: 50%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out;
+}
+
+.why-us-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-us-card .overlay {
+    border: 2px solid var(--bg-primary-color);
+    border-radius: 1em;
+    padding: 1.5em;
+}
+
+.why-us-title {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.why-us-description {
+    /* line-height: 1.2rem; */
+    font-size: 0.8rem;
+}
+
+.why-us-card:nth-child(odd) {
+    border-left: 3px solid var(--bg-primary-color);
+    padding-left: 1em;
+    transform: translateX(50%);
+}
+
+.why-us-card:nth-child(even) {
+    border-right: 3px solid var(--bg-primary-color);
+    padding-right: 1.2em;
+    transform: translateX(calc(-50% + 3.5px));
+}
+
+.why-us-card:nth-child(odd)::before,
+.why-us-card:nth-child(even)::before {
+    content: '';
+    background: var(--bg-primary-color);
+    width: 1em;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.why-us-card:nth-child(odd)::before {
+    left: 0;
+}
+
+.why-us-card:nth-child(even)::before {
+    right: 0;
+    width: 1.18em;
+}
+
+.why-us-card:nth-child(odd) .overlay::before,
+.why-us-card:nth-child(even) .overlay::before {
+    content: '';
+    background: var(--bg-primary-color);
+    width: 0.8em;
+    height: 0.8em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.why-us-card:nth-child(odd) .overlay::before {
+    left: -0.5em;
+}
+
+.why-us-card:nth-child(even) .overlay::before {
+    right: -0.5em;
 }
 
 
