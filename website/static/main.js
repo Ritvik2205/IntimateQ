@@ -93,12 +93,12 @@ $(window).on('scroll', function() {
     }
 
     const heightForWhyUs = heightForDoctors + $('#doctors').height();
-    if (scrollPosition > heightForWhyUs) {
+    if (scrollPosition > (heightForWhyUs - scrollOffset)) {
         $('.why-us-card').each(function(index) {
             const $this = $(this);
             setTimeout(function() {
                 $this.addClass('show');                
-            }, index * 200);
+            }, index * 250);
         })
     } else {
         $('.why-us-card').removeClass('show');
