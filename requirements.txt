@@ -1,1 +1,8 @@
 Flask
+flask-socketio
+flask_sqlalchemy
+flask_login
+PyMySQL
+cryptography
+pymongo
+Flask-PyMongo
