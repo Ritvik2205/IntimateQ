@@ -32,14 +32,24 @@ $(document).ready(function() {
         });                  
     });
 
-    $(".see-all-btn").on('click', function() {
-        window.location.href = '/doctors';
-        
-        // setTimeout(function() {
-        $(".doctor").addClass('show');
+    $("#chat-scroll-btn").on('click', function() {
+        window.location.href = '/all_doctors';   
+    })
 
-        // }, 50);
+    $(".see-all-btn").on('click', function() {
+        window.location.href = '/all_doctors';
     });
+
+    function showDoctor() {
+        if (window.location.href.includes('all_doctors')) {
+            $('.doctor').addClass('show');
+        }
+    }
+
+    $(window).on('popstate', function() {
+        showDoctor();
+    })
+    showDoctor();
 });
 
 $(window).on('scroll', function() {
