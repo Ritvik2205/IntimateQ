@@ -1,6 +1,6 @@
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
-# from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 # from os import getenv
 # from dotenv import load_dotenv
 # from flask_pymongo import PyMongo
@@ -18,7 +18,7 @@ from flask import Flask
 # MONGO_PORT = getenv("MONGO_PORT")
 
 
-# db = SQLAlchemy()
+db = SQLAlchemy()
 # mongo = PyMongo()
 
 # table_names = []
@@ -27,37 +27,37 @@ def create_app():
 
     app = Flask(__name__)   
     app.debug = True
-    # app.config['SECRET_KEY'] = getenv('SECRET_KEY')
+    app.config['SECRET_KEY'] = 'secrecy101'
 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = \
-    #         f'mysql+pymysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = \
+            f'mysql+pymysql://root:password@localhost:3306/intimateQUsers'
     
-    # app.config['MONGO_URI'] = f'mongodb://{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB_NAME}'
+#     app.config['MONGO_URI'] = f'mongodb://localhost:27017/intimateQ'
 
 
-    # db.init_app(app)
-    # mongo.init_app(app)
+    db.init_app(app)
+#     mongo.init_app(app)
 
 
     from .views import views
-    # from .auth import auth
+    from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
-    # app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
 
 
-    # from .models import Leads, User
+    from .models import User
 
-    # login_manager = LoginManager()
-    # login_manager.login_view = 'auth.login'
-    # login_manager.init_app(app)
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
 
-    # @login_manager.user_loader
-    # def load_user(id):
-    #     return User.query.get(int(id))
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
 
     #     db.Model.metadata.reflect(db.engine)
 
