@@ -6,3 +6,5 @@ PyMySQL
 cryptography
 pymongo
 Flask-PyMongo
+redis
+flask-session

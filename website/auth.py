@@ -1,11 +1,21 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from datetime import datetime
+import pickle
 
 auth = Blueprint('auth', __name__)
+
+def get_current_user():
+    user = session.get('user')
+    if user:
+        user_data = pickle.loads(user)
+        user_obj = User.query.get(user_data.id)
+        if user_obj:
+            return int(user_obj.id)
+    return None
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -18,6 +28,8 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
+                user_json = pickle.dumps(user)
+                session['user'] = user_json
                 return redirect(url_for('views.doctors'))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -30,7 +42,8 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth.login'))
+    session.pop('user', None)
+    return redirect(url_for('views.home'))
 
 @auth.route("/register", methods=['GET', 'POST'])
 def signup():
@@ -62,4 +75,4 @@ def signup():
             flash('Account created!', category='success')
             return redirect(url_for('auth.login'))
     else:
-        return render_template("register.html")
+        return render_template("register.html", user=current_user)

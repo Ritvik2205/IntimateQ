@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import redis
+from flask_session import Session
 # from os import getenv
 # from dotenv import load_dotenv
 # from flask_pymongo import PyMongo
@@ -34,8 +36,14 @@ def create_app():
     
 #     app.config['MONGO_URI'] = f'mongodb://localhost:27017/intimateQ'
 
+    #configuring redis
+    app.config['SESSION_TYPE'] = 'redis'
+    app.config['SESSION_PERMANENT'] = False
+    app.config['SESSION_USE_SIGNER'] = True
+    app.config['SESSION_REDIS'] = redis.Redis(host='localhost', port=6379)    
 
     db.init_app(app)
+    Session(app)
 #     mongo.init_app(app)
 
 
