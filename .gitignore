@@ -1,3 +1,22 @@
+# Python environment
+*.env
+.venv/
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
 
+# Logs
+*.log
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Database dumps
+dump.rdb
+
+# Environment variables file
+.env

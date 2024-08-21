@@ -10,5 +10,12 @@ def home():
 
 
 @views.route('/all_doctors')
+@login_required
 def doctors():
     return render_template("doctors.html", user=current_user)
+
+
+@views.route('/doctor/<doctor_id>')
+@login_required
+def doctor_page(doctor_id):
+    return render_template("doctor_page.html", user=current_user, doctor_id=doctor_id)

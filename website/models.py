@@ -11,3 +11,11 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     dateOfBirth = db.Column(db.DateTime(timezone=True), default=func.now())
     gender = db.Column(db.String(150))
+
+
+class Doctor(db.Model, UserMixin):
+    __tablename__ = 'doctor'
+    doctorID = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True)
+    doctorName = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))

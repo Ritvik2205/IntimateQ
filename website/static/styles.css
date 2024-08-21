@@ -32,7 +32,7 @@ html {
     padding: 0;    
     background-color: var(--bg-primary-color);
     color: var(--primary-color);
-    height: 500vh;
+    /* height: 500vh; */
     overflow-x: hidden;
     /* width: 100vw;     */
 }
@@ -789,7 +789,7 @@ body {
     color: var(--bg-primary-color);
 }
 
-/* General mobile styles */
+/* General desktop styles */
 @media (min-width: 768px) {
     
     
@@ -830,8 +830,14 @@ body {
         cursor: pointer;
         transition: 0.1s ease-in;    
     }
+
+    .tab a {
+        text-decoration: none;
+        color: var(--primary-color);
+    }
     
-    .tab-bar .tab:hover {
+    .tab-bar .tab:hover,
+    .tab a:hover {
         color: var(--accent-color);
     }
     
