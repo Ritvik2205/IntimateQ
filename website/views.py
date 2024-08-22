@@ -15,9 +15,7 @@ def home():
 
 @views.route('/all_doctors')
 def doctors():
-    current_user_info = get_current_user()
-    user_type = current_user_info['type']
-    return render_template("doctors.html", user=current_user, user_type=user_type)
+    return render_template("doctors.html", user=current_user)
 
 @views.route('/doctor_dashboard/<doctor_id>')
 @doctor_required
