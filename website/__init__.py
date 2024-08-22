@@ -40,20 +40,22 @@ def create_app():
         'pool_pre_ping': True,
         'pool_recycle': 280
     }
-#     app.config['MONGO_URI'] = f'mongodb://localhost:27017/intimateQ'
+    #app.config['MONGO_URI'] = f'mongodb://localhost:27017/intimateQ'
 
     #configuring redis
-    app.config['SESSION_TYPE'] = SESSION_TYPE
-#     app.config['SESSION_PERMANENT'] = False
-#     app.config['SESSION_USE_SIGNER'] = True
-    redis_url = f"redis://{REDIS_USERNAME}:{SESSION_REDIS_PORT}"
+    app.config['SESSION_TYPE'] = 'filesystem'
+    app.config['SESSION_FILE_DIR'] = '/tmp/flask_session/'  # Directory to store session files
+    app.config['SESSION_PERMANENT'] = False
+    app.config['SESSION_USE_SIGNER'] = True
+    app.config['SESSION_KEY_PREFIX'] = 'session:'
+#     redis_url = f"redis://{REDIS_USERNAME}:{SESSION_REDIS_PORT}"
 #     app.config['SESSION_REDIS'] = redis.StrictRedis(
 #                         host=SESSION_REDIS_HOST,
 #                         port=SESSION_REDIS_PORT,
 #                         username=REDIS_USERNAME,
 #                         password=REDIS_PASSWORD,
 #                         ssl=True)    
-    app.config['SESSION_REDIS'] = redis.from_url(redis_url)
+#     app.config['SESSION_REDIS'] = redis.from_url(redis_url)
 
     db.init_app(app)
     Session(app)
