@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from . import db
 import uuid
 from .decorators import user_required, doctor_required
+from .models import Doctor
+from .auth import get_current_user
 
 views = Blueprint('views', __name__)
 
@@ -16,14 +18,17 @@ def doctors():
     return render_template("doctors.html", user=current_user)
 
 @views.route('/doctor_dashboard/<doctor_id>')
-@doctor_required
+# @doctor_required
 def doctor_dashboard(doctor_id):
     return render_template("doctor_dashboard.html", user=current_user, doctor_id=doctor_id)
 
-@views.route('/chat/<room_code>')
+@views.route('/chat/<room_code>/<doctor_id>')
 @login_required
-def chat(room_code):
-    return render_template("chat.html", user=current_user, room_code=room_code)
+def chat(room_code, doctor_id):
+    doctor = Doctor.query.filter_by(doctorID=doctor_id).first()
+    current_user_info = get_current_user()
+    user_type = current_user_info['type']
+    return render_template("chat.html", user=current_user, doctor=doctor, room_code=room_code, user_type=user_type)
 
 rooms = []
 

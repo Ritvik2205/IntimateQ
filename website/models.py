@@ -12,6 +12,9 @@ class User(db.Model, UserMixin):
     dateOfBirth = db.Column(db.DateTime(timezone=True), default=func.now())
     gender = db.Column(db.String(150))
 
+    def get_id(self):
+        return self.id
+
 
 class Doctor(db.Model, UserMixin):
     __tablename__ = 'doctor'
@@ -19,3 +22,6 @@ class Doctor(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     username = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
+
+    def get_id(self):
+        return (self.doctorID)

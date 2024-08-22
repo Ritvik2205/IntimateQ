@@ -20,7 +20,10 @@
     ></script>
     <script>
         const socket = io();
-        const username = "{{ user.username }}";        
+
+        const userType = "{{ user_type }}";
+
+        
         const roomCode = "{{ room_code }}";        
         const messages = document.getElementById('chat-window');
 
@@ -47,7 +50,12 @@
                 "room": roomCode,
                 "message": message
             } 
-            socket.emit('message', { 'room': roomCode, 'message': message });
+            socket.emit('message', content);
+            if (userType === 'user') {
+                const userId = '{{ user.id }}';    
+                const username = "{{ user.username }}";        
+                socket.emit('chat_request', { 'room': roomCode, 'userId': userId, "message": message });
+            }
             messageInput.value = '';
         }
 
@@ -55,10 +63,12 @@
             sendMessage();
         });
     </script>
-    {% for msg in messages %}
-    <script type="text/javascript">
-        createMessage("{{msg.name}}", "{{msg.message}}");
-    </script>
-    {% endfor %}
+    <div id="messages">
+        {% for msg in messages %}
+        <div class="message">
+            <strong>{{ msg.name }}:</strong> {{ msg.message }}
+        </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

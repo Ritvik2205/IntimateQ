@@ -15,8 +15,17 @@ def get_current_user():
         user_data = pickle.loads(user)
         user_obj = User.query.get(user_data.id)
         if user_obj:
-            return int(user_obj.id)
+            return {'type': 'user', 'id': int(user_obj.id)}
+
+    doctor = session.get('doctor')
+    if doctor:
+        doctor_data = pickle.loads(doctor)
+        doctor_obj = Doctor.query.get(doctor_data.doctorID)
+        if doctor_obj:
+            return {'type': 'doctor', 'id': int(doctor_obj.doctorID)}
+
     return None
+
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -53,13 +62,32 @@ def doctor_login():
                 login_user(doctor, remember=True)
                 doctor_json = pickle.dumps(doctor)
                 session['doctor'] = doctor_json
-                return redirect(url_for('views.doctors_dashboard'))
+                return redirect(url_for('views.doctor_dashboard', doctor_id=doctor.doctorID))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
 
     return render_template("doctor_login.html", user=current_user)
+
+@auth.route("/doctor_register", methods=['GET', 'POST'])
+def doctor_signup():
+    if request.method == 'POST':
+        doctorID = request.form.get('doctorID')
+        email = request.form.get('email')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        doctor = Doctor(
+            doctorID=doctorID,
+            email=email,
+            username=username,
+            password=generate_password_hash(password, method='pbkdf2:sha256')
+        )
+        db.session.add(doctor)
+        db.session.commit()
+        flash('Doctor account created!', category='success')
+        return redirect(url_for('auth.doctor_login'))
+    return render_template("doctor_register.html", user=current_user)
 
 @auth.route("/logout")
 @login_required

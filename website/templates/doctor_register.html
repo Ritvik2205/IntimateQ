@@ -7,20 +7,15 @@
 {% block content %}
 
     <h1>Register</h1>
-    <form action="/register" method="post">
+    <form action="/doctor_register" method="post">
+        <label for="doctorID">Doctor ID</label>
+        <input type="text" name="doctorID" id="doctorID" required>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required>
         <label for="username">Username</label>
         <input type="text" name="username" id="username" required>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required>
-        <label for="date-of-birth"></label>
-        <input type="date" name="date-of-birth" id="date-of-birth" required>
-        <select name="gender" id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
         <button type="submit">Login</button>
     </form>
 

@@ -11,4 +11,33 @@
         <div id="chat-requests"></div>
     </div>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+      integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+      crossorigin="anonymous"
+    ></script>
+    <script defer>
+        const socket = io();
+
+        const doctorID = '{{ doctor_id }}';
+
+        socket.on('chat_request', function(data) {
+            const chatRequests = $('#chat-requests');
+            const requestDiv = $(`
+                <div class="chat-request">
+                    <p>Chat request from ${data.user_json["username"]}</p>
+                    <button class="join-chat-btn" data-room="${data.room}">Join Chat</button>
+                </div>
+            `);
+            chatRequests.append(requestDiv); 
+        });
+
+        document.getElementById('chat-requests').addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('join-chat-btn')) {
+                const room = event.target.getAttribute('data-room');
+                window.location.href = `/chat/${room}/${doctorID}`;
+            }
+        });
+    </script>
+
 {% endblock %}
