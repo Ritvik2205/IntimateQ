@@ -53,7 +53,7 @@ def create_app():
 #                         username=REDIS_USERNAME,
 #                         password=REDIS_PASSWORD,
 #                         ssl=True)    
-    app.config['SESSION_REDIS'] = redis.from_url(redis_url, ssl=True)
+    app.config['SESSION_REDIS'] = redis.from_url(redis_url)
 
     db.init_app(app)
     Session(app)
