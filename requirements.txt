@@ -8,3 +8,6 @@ pymongo
 Flask-PyMongo
 redis
 flask-session
+python-dotenv
+PyMySQL
+cryptography

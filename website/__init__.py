@@ -3,21 +3,22 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import redis
 from flask_session import Session
-# from os import getenv
-# from dotenv import load_dotenv
+from os import getenv
+from dotenv import load_dotenv
 # from flask_pymongo import PyMongo
 
-# load_dotenv()
+load_dotenv()
 
 
-# MYSQL_DB_NAME = getenv("MYSQL_DB_NAME")
-# MYSQL_USERNAME = getenv("MYSQL_USERNAME")
-# MYSQL_PASSWORD = getenv("MYSQL_PASSWORD")
-# MYSQL_PORT = getenv("MYSQL_PORT")
-# MYSQL_HOST = getenv("MYSQL_HOST")
-# MONGO_DB_NAME = getenv("MONGO_DB_NAME")
-# MONGO_HOST = getenv("MONGO_HOST")
-# MONGO_PORT = getenv("MONGO_PORT")
+MYSQL_DB_NAME = getenv("MYSQL_DB_NAME")
+MYSQL_USERNAME = getenv("MYSQL_USERNAME")
+MYSQL_PASSWORD = getenv("MYSQL_PASSWORD")
+MYSQL_PORT = getenv("MYSQL_PORT")
+MYSQL_HOST = getenv("MYSQL_HOST")
+
+SESSION_TYPE = getenv("SESSION_TYPE")
+SESSION_REDIS_HOST = getenv("SESSION_REDIS_HOST")
+SESSION_REDIS_PORT = getenv("SESSION_REDIS_PORT")
 
 
 db = SQLAlchemy()
@@ -32,15 +33,15 @@ def create_app():
     app.config['SECRET_KEY'] = 'secrecy101'
 
     app.config['SQLALCHEMY_DATABASE_URI'] = \
-            f'mysql+pymysql://root:password@localhost:3306/intimateQUsers'
+            f'mysql+pymysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB_NAME}'
     
 #     app.config['MONGO_URI'] = f'mongodb://localhost:27017/intimateQ'
 
     #configuring redis
-    app.config['SESSION_TYPE'] = 'redis'
+    app.config['SESSION_TYPE'] = SESSION_TYPE
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_USE_SIGNER'] = True
-    app.config['SESSION_REDIS'] = redis.Redis(host='localhost', port=6379)    
+    app.config['SESSION_REDIS'] = redis.Redis(host=SESSION_REDIS_HOST, port=SESSION_REDIS_PORT)    
 
     db.init_app(app)
     Session(app)
