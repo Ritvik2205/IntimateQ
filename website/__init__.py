@@ -46,12 +46,14 @@ def create_app():
     app.config['SESSION_TYPE'] = SESSION_TYPE
 #     app.config['SESSION_PERMANENT'] = False
 #     app.config['SESSION_USE_SIGNER'] = True
-    app.config['SESSION_REDIS'] = redis.StrictRedis(
-                        host=SESSION_REDIS_HOST,
-                        port=SESSION_REDIS_PORT,
-                        username=REDIS_USERNAME,
-                        password=REDIS_PASSWORD,
-                        ssl=True)    
+    redis_url = f"redis://{REDIS_USERNAME}:{SESSION_REDIS_PORT}"
+#     app.config['SESSION_REDIS'] = redis.StrictRedis(
+#                         host=SESSION_REDIS_HOST,
+#                         port=SESSION_REDIS_PORT,
+#                         username=REDIS_USERNAME,
+#                         password=REDIS_PASSWORD,
+#                         ssl=True)    
+    app.config['SESSION_REDIS'] = redis.from_url(redis_url, ssl=True)
 
     db.init_app(app)
     Session(app)
