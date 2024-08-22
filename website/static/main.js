@@ -50,6 +50,20 @@ $(document).ready(function() {
         showDoctor();
     })
     showDoctor();
+
+    $('.doctor-consult-btn').on('click', function() {
+        var doctorId = $(this).closest('.doctor').data('doctor-id');
+        $.post(`/generate_room/${doctorId}`, function(data) {
+            const roomCode = data.room_code;
+            const doctorId = data.doctor_id;
+            window.location.href = `/chat/${roomCode}`;
+        });
+    });
+
+    // function addMessage(roomCode) {
+    //     const messageDiv = $('<div>').addClass('message');
+    //     const messageText = $('<p>').text()
+    // }
 });
 
 $(window).on('scroll', function() {

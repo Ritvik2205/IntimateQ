@@ -5,6 +5,7 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from datetime import datetime
 import pickle
+# from .decorators import user_required, doctor_required
 
 auth = Blueprint('auth', __name__)
 
@@ -22,8 +23,9 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
+        print(f"Email: {email}, Password: {password}") 
         user = User.query.filter_by(email=email).first()
+        print(f"Queried User: {user}")
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
@@ -51,7 +53,7 @@ def doctor_login():
                 login_user(doctor, remember=True)
                 doctor_json = pickle.dumps(doctor)
                 session['doctor'] = doctor_json
-                return redirect(url_for('views.doctors'))
+                return redirect(url_for('views.doctors_dashboard'))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:

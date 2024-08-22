@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Chat</h1>
+        <div id="chat-window"></div>
+        <input type="text" id="chat-message" placeholder="Type a message...">
+        <button id="send-message-btn">Send</button>
+    </div>
+
+    <script>
+        const socket = io();
+        const username = "{{ user.username }}";        
+        const roomCode = "{{ room_code }}";        
+        const messages = document.getElementById('chat-window');
+
+        socket.emit('join', roomCode);
+
+        function createMessage(name, msg) {
+            const content = `
+                <div>
+                    <strong>${name}</strong>: ${msg}
+                </div>
+            `;
+            messages.innerHTML += content;
+        }
+
+        socket.on('message', function(content) {
+            createMessage(content.name, content.message);
+        });
+
+        function sendMessage() {
+            const messageInput = document.getElementById('chat-message');
+            const message = messageInput.value;
+            if (message === "") return;            
+            const content = {
+                "room": roomCode,
+                "message": message
+            } 
+            socket.emit('message', { 'room': roomCode, 'message': message });
+            messageInput.value = '';
+        }
+
+        document.getElementById('send-message-btn').addEventListener('click', function() {
+            sendMessage();
+        });
+    </script>
+    {% for msg in messages %}
+    <script type="text/javascript">
+        createMessage("{{msg.name}}", "{{msg.message}}");
+    </script>
+    {% endfor %}
+
+{% endblock %}

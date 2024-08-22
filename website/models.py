@@ -17,5 +17,5 @@ class Doctor(db.Model, UserMixin):
     __tablename__ = 'doctor'
     doctorID = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
-    doctorName = db.Column(db.String(150), unique=True)
+    username = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
