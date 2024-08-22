@@ -22,7 +22,10 @@
     </div>
 
     <script type="text/javascript" defer>
-        const socket = io();
+        const socket = io('wss://intimateq.onrender.com', {
+                            path: '/socket.io',
+                            transports: ['websocket']
+                        });
 
         const userType = "{{ user_type }}";
 
