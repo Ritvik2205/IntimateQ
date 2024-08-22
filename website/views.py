@@ -10,9 +10,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    current_user_info = get_current_user()
-    user_type = current_user_info['type']
-    return render_template("index.html", user=current_user, user_type=user_type)
+    return render_template("index.html", user=current_user)
 
 
 @views.route('/all_doctors')
