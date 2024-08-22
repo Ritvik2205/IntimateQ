@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, jsonify, request, redirect, url_fo
 from flask_login import login_required, current_user
 from . import db
 import uuid
-# from .decorators import user_required, doctor_required
+from .decorators import user_required, doctor_required
 
 views = Blueprint('views', __name__)
 
@@ -16,7 +16,7 @@ def doctors():
     return render_template("doctors.html", user=current_user)
 
 @views.route('/doctor_dashboard/<doctor_id>')
-@login_required
+@doctor_required
 def doctor_dashboard(doctor_id):
     return render_template("doctor_dashboard.html", user=current_user, doctor_id=doctor_id)
 
@@ -28,7 +28,7 @@ def chat(room_code):
 rooms = []
 
 @views.route('/generate_room/<doctor_id>', methods=['POST'])
-@login_required
+@user_required
 def generate_room(doctor_id):
     while True:
         room_code = str(uuid.uuid4())
