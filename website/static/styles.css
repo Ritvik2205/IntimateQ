@@ -20,11 +20,6 @@
     --tertiary-color: #504F48;
 }
 
-img {
-    aspect-ratio: 1;
-    height: 100px;
-}
-
 html {
     top: 0;
     left: 0;
@@ -42,8 +37,69 @@ body {
     /* position: absolute; */
 }
 
+.burger-menu {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 10000;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.burger-menu.active {
+    transform: rotate(90deg);
+}
+
+.burger-menu img {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    transition: 0.3s ease;
+    filter: invert(60%) sepia(12%) saturate(131%) hue-rotate(7deg) brightness(98%) contrast(86%);
+}
+
+.burger-menu.active img {
+    filter: invert(10%) sepia(7%) saturate(567%) hue-rotate(349deg) brightness(102%) contrast(88%);
+}
+
+.burger-menu img:hover,
+.burger-menu.active img:hover {
+    background-color: transparent;
+}
+
 .tab-bar {
-    display: none;
+    width: 40%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;    
+    margin-right: 0px;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    transition: right 0.4s ease-in-out;
+}
+
+.tab-bar.active {
+    right: 0;
+}
+
+.tab-bar .tab {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--bg-primary-color);
+    cursor: pointer;
+    transition: 0.1s ease-in;    
+}
+
+.tab a {
+    text-decoration: none;
+    color: var(--bg-primary-color);
 }
 
 .heading {
@@ -792,6 +848,9 @@ body {
 /* General desktop styles */
 @media (min-width: 768px) {
     
+    .burger-menu {
+        display: none;
+    }
     
     .tab-container {
         top: 0;
@@ -816,24 +875,15 @@ body {
         width: 40%;
         float: right;
         display: flex;
+        flex-direction: row;
         justify-content: end;
         align-items: center;    
         margin-right: 20px;
-        z-index: 1000;
-    }
-    
-    .tab-bar .tab {
-        margin-left: 20px;
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: var(--primary-color);
-        cursor: pointer;
-        transition: 0.1s ease-in;    
-    }
-
-    .tab a {
-        text-decoration: none;
-        color: var(--primary-color);
+        z-index: 1000;    
+        position: static;
+        top: 0;
+        right: 0;
+        background-color: transparent;    
     }
     
     .tab-bar .tab:hover,

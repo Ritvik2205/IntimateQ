@@ -65,6 +65,14 @@ $(document).ready(function() {
     //     const messageDiv = $('<div>').addClass('message');
     //     const messageText = $('<p>').text()
     // }
+
+    const burgerMenu = $('.burger-menu');
+    const tabBar = $('.tab-bar');
+
+    burgerMenu.click(function() {
+        burgerMenu.toggleClass('active');
+        tabBar.toggleClass('active');
+    })
 });
 
 $(window).on('scroll', function() {
