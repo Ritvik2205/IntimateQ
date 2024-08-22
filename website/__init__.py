@@ -64,9 +64,9 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
     
-    @login_manager.user_loader
-    def load_doctor(doctorId):
-        return Doctor.query.get(int(doctorId))
+#     @login_manager.user_loader
+#     def load_doctor(doctorId):
+#         return Doctor.query.get(int(doctorId))
 
     with app.app_context():
         db.create_all()
