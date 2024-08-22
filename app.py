@@ -1,4 +1,4 @@
-from flask import session
+from flask import session, send_from_directory
 from website import create_app
 from flask_socketio import SocketIO, join_room, leave_room, send, emit
 import pickle
@@ -6,6 +6,10 @@ from website.models import User
 
 app = create_app()
 socketio = SocketIO(app)
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.static_folder, filename)
 
 def serialise_user(user):
     return {
