@@ -19,6 +19,8 @@ MYSQL_HOST = getenv("MYSQL_HOST")
 SESSION_TYPE = getenv("SESSION_TYPE")
 SESSION_REDIS_HOST = getenv("SESSION_REDIS_HOST")
 SESSION_REDIS_PORT = getenv("SESSION_REDIS_PORT")
+REDIS_USERNAME = getenv("REDIS_USERNAME")
+REDIS_PASSWORD = getenv("REDIS_PASSWORD")
 
 
 db = SQLAlchemy()
@@ -41,7 +43,12 @@ def create_app():
     app.config['SESSION_TYPE'] = SESSION_TYPE
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_USE_SIGNER'] = True
-    app.config['SESSION_REDIS'] = redis.Redis(host=SESSION_REDIS_HOST, port=SESSION_REDIS_PORT)    
+    app.config['SESSION_REDIS'] = redis.StrictRedis(
+                        host=SESSION_REDIS_HOST,
+                        port=SESSION_REDIS_PORT,
+                        username=REDIS_USERNAME,
+                        password=REDIS_PASSWORD,
+                        ssl=True)    
 
     db.init_app(app)
     Session(app)
