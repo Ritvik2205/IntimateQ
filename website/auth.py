@@ -65,7 +65,10 @@ def doctor_login():
 @login_required
 def logout():
     logout_user()
-    session.pop('user', None)
+    if session.get('user'):
+        session.pop('user', None)   
+    elif session.get('doctor'):
+        session.pop('doctor', None)
     return redirect(url_for('views.home'))
 
 @auth.route("/register", methods=['GET', 'POST'])
