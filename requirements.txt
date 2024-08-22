@@ -11,3 +11,4 @@ flask-session
 python-dotenv
 PyMySQL
 cryptography
+gunicorn
