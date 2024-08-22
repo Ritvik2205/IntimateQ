@@ -10,17 +10,23 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    return render_template("index.html", user=current_user)
+    current_user_info = get_current_user()
+    user_type = current_user_info['type']
+    return render_template("index.html", user=current_user, user_type=user_type)
 
 
 @views.route('/all_doctors')
 def doctors():
-    return render_template("doctors.html", user=current_user)
+    current_user_info = get_current_user()
+    user_type = current_user_info['type']
+    return render_template("doctors.html", user=current_user, user_type=user_type)
 
 @views.route('/doctor_dashboard/<doctor_id>')
-# @doctor_required
+@doctor_required
 def doctor_dashboard(doctor_id):
-    return render_template("doctor_dashboard.html", user=current_user, doctor_id=doctor_id)
+    current_user_info = get_current_user()
+    user_type = current_user_info['type']
+    return render_template("doctor_dashboard.html", user=current_user, doctor_id=doctor_id, user_type=user_type)
 
 @views.route('/chat/<room_code>/<doctor_id>')
 @login_required

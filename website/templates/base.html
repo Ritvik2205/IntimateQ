@@ -22,7 +22,13 @@
             <!-- <div class="tab">About Us</div> -->
             <!-- <div class="tab">Testimonials</div> -->
             <div class="tab" data-section-id="#contact">Contact</div>
+            {% if user_type == 'user' %}
+                <div class="tab"><a href="{{ url_for('views.doctors') }}">Doctors</a></div>
+            {% endif %}
             {% if user.is_authenticated %}
+                {% if user_type == 'doctor' %}
+                    <div class="tab"><a href="{{ url_for('views.doctor_dashboard', doctor_id=user.doctorID) }}">Dashboard</a></div>
+                {% endif %}
             <div class="tab" ><a href="/logout">Logout</a></div>
             {% else %}
             <div class="tab" ><a href="/login">Login</a></div>
