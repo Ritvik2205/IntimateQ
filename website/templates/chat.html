@@ -75,11 +75,16 @@
                 "room": roomCode,
                 "message": message
             } 
-            socket.emit('message', content);
+            sockets.forEach(socket => {
+                socket.emit('message', content);
+            });
+            
             if (userType === 'user') {
                 const userId = '{{ user.id }}';    
-                const username = "{{ user.username }}";        
-                socket.emit('chat_request', { 'room': roomCode, 'userId': userId, "message": message });
+                const username = "{{ user.username }}";  
+                sockets.forEach(socket => {
+                    socket.emit('chat_request', { 'room': roomCode, 'userId': userId, "message": message });
+                });
             }
             messageInput.value = '';
         }
