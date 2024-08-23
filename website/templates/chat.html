@@ -7,7 +7,7 @@
 {% block content %}
 
     <div class="form-container">
-        <div class="container" class="form">
+        <div class="chat-container form">
             <h1>Chat</h1>
             <div id="chat-window">
                 <div id="messages">
@@ -18,8 +18,10 @@
                     {% endfor %}
                 </div>
             </div>
-            <input type="text" id="chat-message" placeholder="Type a message...">
-            <button id="send-message-btn">Send</button>
+            <div class="chat-bottom">
+                <input type="text" id="chat-message" placeholder="Type a message...">
+                <button id="send-message-btn">Send</button>
+            </div>
         </div>
     </div>
 
