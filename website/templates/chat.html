@@ -28,18 +28,34 @@
     
 
     <script type="text/javascript" defer>
-        const socket = io('wss://intimateq.onrender.com', {
-                            path: '/socket.io',
-                            transports: ['websocket']
-                        });
-
-        const userType = "{{ user_type }}";
-
+        const sockets = [
+            io('wss://intimateq.onrender.com', {
+                path: '/socket.io',
+                transports: ['websocket']
+            }),
+            io('https://intimateq.in', {
+                path: '/socket.io',
+                transports: ['websocket']
+            }),
+            io('https://www.intimateq.in', {
+                path: '/socket.io',
+                transports: ['websocket']
+            })
+        ];
         
+
+        const userType = "{{ user_type }}";        
         const roomCode = "{{ room_code }}";        
         const messages = document.getElementById('chat-window');
 
-        socket.emit('join', roomCode);
+        sockets.forEach(socket => {
+            socket.emit('join', roomCode);
+
+            socket.on('message', function(content) {
+                createMessage(content.name, content.message);
+            });
+        });
+
 
         function createMessage(name, msg) {
             const content = `
@@ -50,9 +66,6 @@
             messages.innerHTML += content;
         }
 
-        socket.on('message', function(content) {
-            createMessage(content.name, content.message);
-        });
 
         function sendMessage() {
             const messageInput = document.getElementById('chat-message');

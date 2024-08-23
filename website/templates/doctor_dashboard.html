@@ -12,23 +12,36 @@
     </div>
 
     <script defer>
-        const socket = io('wss://intimateq.onrender.com', {
-            path: '/socket.io',
-            transports: ['websocket']
-        });
+        const sockets = [
+            io('wss://intimateq.onrender.com', {
+                path: '/socket.io',
+                transports: ['websocket']
+            }),
+            io('https://intimateq.in', {
+                path: '/socket.io',
+                transports: ['websocket']
+            }),
+            io('https://www.intimateq.in', {
+                path: '/socket.io',
+                transports: ['websocket']
+            })
+        ];
 
         const doctorID = '{{ doctor_id }}';
 
-        socket.on('chat_request', function(data) {
-            const chatRequests = $('#chat-requests');
-            const requestDiv = $(`
-                <div class="chat-request">
-                    <p>Chat request from ${data.user_json["username"]}</p>
-                    <button class="join-chat-btn" data-room="${data.room}">Join Chat</button>
-                </div>
-            `);
-            chatRequests.append(requestDiv); 
+        sockets.forEach(socket => {
+            socket.on('chat_request', function(data) {
+                const chatRequests = $('#chat-requests');
+                const requestDiv = $(`
+                    <div class="chat-request">
+                        <p>Chat request from ${data.user_json["username"]}</p>
+                        <button class="join-chat-btn" data-room="${data.room}">Join Chat</button>
+                    </div>
+                `);
+                chatRequests.append(requestDiv); 
+            });
         });
+
 
         document.getElementById('chat-requests').addEventListener('click', function(event) {
             if (event.target && event.target.classList.contains('join-chat-btn')) {
