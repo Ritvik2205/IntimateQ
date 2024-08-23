@@ -6,20 +6,24 @@
 
 {% block content %}
 
-    <div class="container">
-        <h1>Chat</h1>
-        <div id="chat-window"></div>
-        <input type="text" id="chat-message" placeholder="Type a message...">
-        <button id="send-message-btn">Send</button>
+    <div class="form-container">
+        <div class="container" class="form">
+            <h1>Chat</h1>
+            <div id="chat-window">
+                <div id="messages">
+                    {% for msg in messages %}
+                    <div class="message">
+                        <strong>{{ msg.name }}:</strong> {{ msg.message }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <input type="text" id="chat-message" placeholder="Type a message...">
+            <button id="send-message-btn">Send</button>
+        </div>
     </div>
 
-    <div id="messages">
-        {% for msg in messages %}
-        <div class="message">
-            <strong>{{ msg.name }}:</strong> {{ msg.message }}
-        </div>
-        {% endfor %}
-    </div>
+    
 
     <script type="text/javascript" defer>
         const socket = io('wss://intimateq.onrender.com', {

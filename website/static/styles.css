@@ -845,6 +845,95 @@ body {
     color: var(--bg-primary-color);
 }
 
+.form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-heading {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;    
+}
+
+.form-wrapper {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#register-form-wrapper {
+    height: 80%;
+}
+
+.form {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;        
+    border-radius: 10px;
+    box-shadow:-4px -4px 12px rgb(63, 61, 58), 4px 4px 12px rgb(23, 22, 19);
+}
+
+.form label {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--bg-secondary-color);
+}
+
+.form #email,
+.form #username,
+.form #password,
+.form #date-of-birth,
+.form #gender { 
+    position: relative;
+    width: 80%;
+    height: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    /* left: 50%;
+    transform: translateX(-50%); */
+}
+
+.form #email:focus,
+.form #password:focus,
+.form #username:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+.form button {
+    width: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
 /* General desktop styles */
 @media (min-width: 768px) {
     
@@ -876,14 +965,20 @@ body {
         float: right;
         display: flex;
         flex-direction: row;
-        justify-content: end;
+        justify-content: space-evenly;
         align-items: center;    
         margin-right: 20px;
         z-index: 1000;    
         position: static;
         top: 0;
         right: 0;
+        height: 100%;
         background-color: transparent;    
+    }
+
+    .tab-bar .tab,
+    .tab a {
+        color: var(--primary-color);
     }
     
     .tab-bar .tab:hover,
